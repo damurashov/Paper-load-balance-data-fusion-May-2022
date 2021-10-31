@@ -1,0 +1,34 @@
+Time is considered discrete. Every agent's action, therefore, is discrete as well. Depending on the number of ticks every agent has in its disposal, on every iteration, each agent can perform a set of sequences like this:
+
+$$
+    \{Move, Move, Move, ..., Interaction\}
+$$
+
+Exceeding maximum number of ticks per iteration, or encountering another agent constitute the end of a current iteration.
+
+To bestow situation assessment capabilities on the agents, it is prposed to express agents' reasoning process and possible actions outcome assessment in terms of a gain, or score. The \textit{gain} gets evaluated as a sum of gain from movement, and that from interaction:
+
+$$
+G = G^{(Mv)} + G^{(Int)}.
+$$
+
+$G$ cannot be defined in-advance, because it is not known how much steps an iteration will take, so $G$ gets replaced with expected value $\mathrm{E}G$. Considering the variety of possible outcomes, it is decided to consider all outcomes equally probable.
+
+$$
+    \mathrm{E}G = \frac 1 N_t \sum_{t=1}^{N_t}{(G^{(Mv)}_t + G^{(Int)}_t)}
+$$
+
+Depending on how "lucky" the agent is, it may encounter another agent during its first step, or not at all. Also, $G^{(Int)}_t$ is also not known, because it depends on how many other agents this agent can reach in $t$ ticks, so the gain from interaction gets replaced with its expected value as well. Considering that, let's rewrite the equation in its final form:
+
+\begin{equation}
+    \mathrm{E}{G} = \frac 1 N_t (\sum_{t=1}^{N_t}{G^{(Mv)}_t} + \sum_{t=1}^{N_t - 1}{\mathrm{E}G^{(Int)}_t})
+\end{equation}
+
+It is reasonable to assume that the closer another agent is, the more the probability of interaction. Therefore, the expected gain from interaction on tick $t$ may be expressed in terms of distance:
+
+\begin{equation}
+    \begin{gathered}
+        \mathrm{E}G^{(Int)}_t = \sum_{ag \in \{ag\}}{G^{(Int)}_{t,ag}p_{ag}}\\
+        p_{ag} = \frac {dist(ag)} {\sum_{ag \in \{ag\}}{dist(ag)}}
+    \end{gathered}
+\end{equation}
