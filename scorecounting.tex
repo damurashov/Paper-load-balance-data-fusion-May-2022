@@ -37,8 +37,8 @@ expected gain from interaction on tick $t$ may be expressed in terms of distance
 
 \begin{equation}
     \begin{gathered}
-        \mathrm{E}G^{(Int)}_t = \sum_{a \in \{a\}}{G^{(Int)}_{t,a}p_{a}}\\
-        p_{ag} = \frac {dist(a)} {\sum_{a \in \{a\}}{dist(a)}}
+        \mathrm{E}G^{(Int)}_t = \sum_{a \in A}{G^{(Int)}_{t,a}p_{a}}\\
+        p_{a} = \frac {Dist_a} {\sum_{j \in A}{Dist_j}}
     \end{gathered}
 \end{equation}
-$dist(a)$ denotes distance between this agent and another agent from the set of reachable agents \{a\}.
+$Dist_j$ denotes distance between this agent and agent $j$ from the set of reachable agents $A$.
