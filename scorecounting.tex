@@ -2,7 +2,12 @@ Time is considered discrete. Every agent's action, therefore, is discrete as wel
 every agent has in its disposal, on every iteration, each agent can perform a set of sequences like this:
 
 $$
-    \{Move, Move, Move, ..., Interaction\}
+    \begin{gathered}
+        \{Interaction\}\\
+        \{Move, Interaction\}\\
+        \{Move, Move, Interaction\}\\
+        \{Move, Move, Move\}
+    \end{gathered}
 $$
 
 Exceeding maximum number of ticks per iteration, or encountering another agent constitute the end of a current iteration.
