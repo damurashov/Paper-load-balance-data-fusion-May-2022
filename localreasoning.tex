@@ -1,9 +1,27 @@
-Now that we established the basic principles of how gain and loss get counted, and devised ourselves a preference
-hierarchy, let us delve into topic of how a situation can be assessed locally by an individual agent. This of course can
-be considered redundant given that the mechanism itself is the object of interest here. But having this full-fledged
+Now that we established the basic principles of how gain and loss get counted, and devised a preference hierarchy, let
+us delve into how a situation can be assessed locally by an individual agent. This of course can be considered redundant
+given that the mechanism itself is the object of interest here. But having this full-fledged
 % TODO: Is that correct to call it "proof of concept"?
 model we will be able to run a simulation and see how the mechanism performs, thus get ourselves a proof of concept.
 
 In essence, what is required to be done here is to model a way how an agent assesses the impact of its "hit", "run",
 "gather", or "idle" actions in terms of "enemy resource deprivation", "resource acquisition", and other contexts (Figure
-\ref{fig:df-models}).
+\ref{fig:df-models}). Here is the tuple we employ to represent the model formally:
+
+\begin{equation}
+    \begin{gathered}
+        Model = \left< P, Act, Asp, En, Tp, G_{t, a}^{(Int)} \right>,\\
+        G: P \times Act \times Asp \times Tp \times E \times E \rightarrow \mathbb{R},
+    \end{gathered}
+\end{equation}
+
+\begin{itemize}
+    \item $P$ is a set of model \textit{properties},
+    \item $Act = \{Run, Gather, Hit, Idle\}$ is a set of \textit{actions},
+    \item $Asp = \{ ERD, RA, EW, SA, SS, RS \}$ is a set of \textit{aspects},
+    \item $E \subseteq \mathbb{R}$ is an \textit{"attribute"} representing energy of an agent,
+    \item $Tp = \{Resource, Hitter \}$ is a type of agent,
+    \item $G_{t, a}^{(Int)}$ is the gain function.
+\end{itemize}
+
+The gain function $G$ calculates the expected gain of interaction with relation to ticks
