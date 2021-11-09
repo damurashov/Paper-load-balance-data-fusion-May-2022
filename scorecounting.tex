@@ -40,7 +40,7 @@ final form:
 It is reasonable to assume that the closer another agent is, the more the probability of interaction. Therefore, the
 expected gain from interaction on tick $t$ may be expressed in terms of distance:
 
-\begin{equation}
+\begin{equation}\label{eq:expected-gain}
     \begin{gathered}
         \mathrm{E}G^{(Int)}_t = \sum_{a \in A}{G^{(Int)}_{t,a}p_{a}}\\
         p_{a} = \frac {Dist_a} {\sum_{j \in A}{Dist_j}}
