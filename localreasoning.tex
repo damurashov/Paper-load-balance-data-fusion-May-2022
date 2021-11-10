@@ -10,18 +10,34 @@ In essence, what is required to be done here is to model a way how an agent asse
 
 \begin{equation}
     \begin{gathered}
-        Model = \left< P, Act, Asp, En, Tp, G_{t, a}^{(Int)} \right>,\\
-        G: P \times Act \times Asp \times Tp \times E \times E \rightarrow \mathbb{R},
+        Model = \left< P, Act, Asp, Tp, E, T, G_{t, a}^{(Int)} \right>,\\
+        G: P, Act \times Asp \times Tp \times E \times E \times T \rightarrow \mathbb{R},
     \end{gathered}
 \end{equation}
 
 \begin{itemize}
     \item $P$ is a set of model \textit{properties},
     \item $Act = \{Run, Gather, Hit, Idle\}$ is a set of \textit{actions},
-    \item $Asp = \{ ERD, RA, EW, SA, SS, RS \}$ is a set of \textit{aspects},
+    \item $Asp = \{ ERD, RA, EW, SA, SS, RS \}$ is a set of \textit{aspects}; the abbreviations are composed using first letters of strategic aspects (Figure \ref{fig:df-models}),
     \item $E \subseteq \mathbb{R}$ is an \textit{"attribute"} representing energy of an agent,
-    \item $Tp = \{Resource, Hitter \}$ is a type of agent,
+    \item $Tp = \{Resource, Hitter \}$ is a type of an agent,
+    \item $T \subseteq \mathbb{Z}$ is the number of ticks spent by the time the gain function is being calculated counting from the beginning of a current iteration,
     \item $G_{t, a}^{(Int)}$ is the gain function.
 \end{itemize}
 
-The gain function $G$ calculates the expected gain of interaction with relation to ticks
+Here is the list of the model's properties $P$. The properties are chosen once and remain stable during the simulation:
+
+\begin{itemize}
+    \item $P_{GnEnWt}$ stands for "gain energy waiting". It represents the amount of energy an agent gains while being $Idle$;
+    \item $P_{LsEnMv}$ stands for "loss energy moving". It represents the amount of energy an agent loses when it moves;
+    \item $P_{Sp}$ stands for "speed". It represents the speed in \textit{distance units per tick};
+    \item $P_{LsEnAg}$ stands for "loss energy aggressive". It represents the fraction of energy the agent loses when it instantiates a hit, i.e. interacts while being in $Hit$ state;
+    \item $P_{GnEnWn}$ stands for "gain energy win". It represents the fraction of an enemy's energy if that has been defeated;
+    \item $P_{GnRsWn}$ stands for "gain resource win". It represents the fraction of an enemy's energy that is converted into resource, given that the enemy has been defeated;
+    \item $P_{LsRsLs}$ stands for "loss resource lose". It represents the amount of resource the team loses when agent gets defeated;
+    \item $P_{GnEn}$ stands for "gain energy". It represents the fraction of a $Resource$'s energy that is being converted to energy for the agent;
+    \item $P_{GnRs}$ stands for "gain ressource". It represents the fraction of a $Resource$'s energy that is converted to the team's resource.
+\end{itemize}
+
+This rather big set of properties reveals the rules of the simulation and provide hints on how the agents' reasoning
+is implemented.
