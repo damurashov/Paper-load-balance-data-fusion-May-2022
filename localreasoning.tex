@@ -25,7 +25,8 @@ In essence, what is required to be done here is to model a way how an agent asse
     \item $G_{t, a}^{(Int)}$ is the gain function.
 \end{itemize}
 
-Here is the list of the model's properties $P$. The properties are chosen once and remain stable during the simulation:
+Here is the list of the elements of the model's properties set $P$. The properties are chosen once and remain stable
+during the simulation:
 
 \begin{itemize}
     \item $P_{GnEnWt}$ stands for "gain energy waiting". It represents the amount of energy an agent gains while being $Idle$;
@@ -39,5 +40,31 @@ Here is the list of the model's properties $P$. The properties are chosen once a
     \item $P_{GnRs}$ stands for "gain ressource". It represents the fraction of a $Resource$'s energy that is converted to the team's resource.
 \end{itemize}
 
-This rather big set of properties reveals the rules of the simulation and provide hints on how the agents' reasoning
-is implemented.
+This rather big set of properties reveals the rules of the simulation and provide hints on how the agents' reasoning is
+implemented. Now to the score couting. The most straightworward and quite illustrative one is the $G_t^{(Mv)}$ component
+of equation (\ref{eq:expected-gain}):
+
+\begin{equation*}
+    \begin{gathered}
+        $$
+        G_t^{(Mv)}(P,act,asp,t) =
+        \begin{cases}
+            tP_{GnEnWt} & \mbox{if } act=Idle \wedge asp = SA,\\
+            \frac {1} {tP_{LsEnMv}} & \mbox{if } act \in \{Hit, Gather, Run\} \wedge asp = SS,\\
+            0 & \mbox{otherwise}.
+        \end{cases} \\
+        act \in Act, \  asp \in Asp.
+        $$
+    \end{gathered}
+\end{equation*}
+
+Simply speaking movement-related scores only make sense in aspects of "strength saving" ($SS$) or "strength acquisition"
+($SA$). Also, the approach we have selected does not imply balance of loss and gain, i.e. no negative gains were
+implied. This makes for clearer score interpretation in the context of AHP preference graph weights, on one hand, and
+for simpler weights normalization, on the other.
+
+Scores for $SS$ and $RS$ aspects are represented as a \textit{loss score} to the power of $-1$. $G_{t,a}^{(Int)}$ values
+for "saving" aspects are calculated the same way as it will be demonstrated. So in essence this is reasoning in terms of
+loss minimization. This inversion of units here does not create distortions from the standpoint of dimensional analysis
+because all the scores for $Idle$, $Hit$, and other actions are "contained" within one aspect and expressed in the same
+units.
