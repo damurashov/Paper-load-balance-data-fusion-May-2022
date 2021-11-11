@@ -50,7 +50,7 @@ of equation (\ref{eq:expected-gain}):
         G_t^{(Mv)}(P,act,asp,t) =
         \begin{cases}
             tP_{GnEnWt} & \mbox{if } act=Idle \wedge asp = SA,\\
-            \frac {1} {tP_{LsEnMv}} & \mbox{if } act \in \{Hit, Gather, Run\} \wedge asp = SS,\\
+            ({tP_{LsEnMv}})^{-1} & \mbox{if } act \in \{Hit, Gather, Run\} \wedge asp = SS,\\
             0 & \mbox{otherwise}.
         \end{cases} \\
         act \in Act, \  asp \in Asp.
@@ -68,3 +68,41 @@ for "saving" aspects are calculated the same way as it will be demonstrated. So 
 loss minimization. This inversion of units here does not create distortions from the standpoint of dimensional analysis
 because all the scores for $Idle$, $Hit$, and other actions are "contained" within one aspect and expressed in the same
 units.
+
+Interaction score $G_t^{(Int)}$ counting is way more interesting. We employed brobabilistic reasoning here along with
+penalties for aggressive behavior, i.e. when an agent is in $Hit$ state, and also adjustments of energy for already
+spent simulation ticks during a current iteration.
+
+For sake of clarity, we give one particular team a central role and refer to other teams as rival teams. Agents from the
+"focus" team, we call "these agents", and agents from other teams are called "the other" ones.
+
+Ticks spent during a current iteration are taken into account in the form of energy adjustments. $E'$ and $E'_a$
+represent "this" and "the other" agents' energy values before the interation. As for interactions between agents from
+different teams, the gained scores from the interactions are calculated using probabilities of win of this $p^{(win)}$
+and win of the other $p^{(win)}_a$ agent. Also, this agent cannot know what state the other agent will be in by the
+moment of interaction. Therefore, every possiblility is considered equally probable. So the interaction outcome is
+calculated as an expected value for 4 equally probable states of the other agent.
+
+\begin{equation*}
+    \begin{gathered}
+        G_t^{(Int)}(P, act, asp, t, E, E_a) = \begin{cases}
+            0.25 \sum_{act_a \in Act} {E'_ap^{(win)}P_{LsRsLs}}  & \mbox{if  } asp = ERD\\
+            0.25 \sum_{act_a \in Act} {E'_ap^{(win)}P_{GnRsWn}}  & \mbox{if  } asp = RA\\
+            0.25 \sum_{act_a \in Act} {E'_ap^{(win)}}  & \mbox{if  } asp = EW\\
+            0.25 \sum_{act_a \in Act} {E'_ap^{(win)}P_{GnEnWn}}  & \mbox{if  } asp = SA\\
+            0.25 \sum_{act_a \in Act} {(E'p_a^{(win)}P_{GnEnWn})^{-1}}  & \mbox{if  } asp = SS\\
+            0.25 \sum_{act_a \in Act} {(E'p_a^{(win)}P_{GnRsWn})^{-1}}  & \mbox{if  } asp = RS
+        \end{cases} \\
+        E'(act) = \begin{cases}
+            E - tP_{LsEnMv} & \mbox{if } act \in \{Hit, Run, Gather\}\\
+            E + tP_{GnEnWt} & \mbox{if } act = $Idle$
+        \end{cases}\\
+        E_a'(act_a) = \begin{cases}
+            E_a - tP_{LsEnMv} & \mbox{if } act_a \in \{Hit, Run, Gather\}\\
+            E_a + tP_{GnEnWt} & \mbox{if } act_a = $Idle$
+        \end{cases}\\
+        p^{(win)} = \frac {E'} {E' + E'_a},\ \
+        p^{(win)}_a = \frac {E'_a} {E' + E'_a}
+    \end{gathered}
+\end{equation*}
+
