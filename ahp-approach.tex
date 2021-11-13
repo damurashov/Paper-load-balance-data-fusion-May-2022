@@ -13,9 +13,14 @@
 
 % TODO: plan
 % -- hierarchy of preferences
-% -- formal description of the graph. Definitions: levels
+% ?? formal description of the graph. Definitions: levels
 % -- separation of responsibilities, the actual approach to simulation
-% -- definitions: aspects, contexts
+%TODO: Constraints. We do not:
+    % 1. Delve into an agent's reasoning process;
+    % 2. Imply any particular structure of the graph;
+    % 3. Imply any particular implementation of an agent, neither its reasoning process (although we model that in our
+    %    "implementation" section)
+% -- definitions: aspects, contexts, levels
 % -- fusion of tactical decisions up to the general objective (moving up the contexts)
 % -- using AHP for this
 % -- the recursive algorithm implementing the idea
@@ -24,16 +29,28 @@ In order to incorporate both strategic and tactical objectives into the decision
 the latter as a result of decomposing strategic ones. By that, we do not necessarily mean that tactical objectives have
 to be mutually exclusive components, represent dependencies or certain milestones, although that is definitely an
 option. It implies that any lower-level objective may be a part of two or more higher-level ones. This decomposition can
-be represented as a hierarchy or preferences or preference graph (Figure \ref{fig:prefgraph-concept}).
+be represented as a hierarchy of preferences or preference graph (Figure \ref{fig:prefgraph-concept-shared}).
 %TODO: ref figure
 
 \begin{figure}[hbt!]
     \centering
-    \includegraphics[width=0.7\textwidth]{prefgraph-concept.eps}
+    \begin{subfigure}{.45\linewidth}
+        \includegraphics[width=\textwidth]{prefgraph-concept.eps}
+        \caption{Shared graph}\label{fig:prefgraph-concept-shared}
+    \end{subfigure}
+    \begin{subfigure}{.45\linewidth}
+        \includegraphics[width=\textwidth]{prefgraph-concept-extended.eps}
+        \caption{Local graph}\label{fig:prefgraph-concept-local}
+    \end{subfigure}
 
     \caption{\small An example of a preference graph}
     \label{fig:prefgraph-concept}
 \end{figure}
 
-To enrich
-the semantics of the decomposition process, we propose to not to limit it by just one iteration.
+However, this graph (Figure \ref{fig:prefgraph-concept-shared}) is only a part of a preference graph as it lacks
+alternatives. Adding alternatives will give us a full-fledged preference graph (Figure
+\ref{fig:prefgraph-concept-local}). For reasons that will soon become obvious we call graph in Figure
+\ref{fig:prefgraph-concept-shared} "shared" and the one in Figure \ref{fig:prefgraph-concept-local} "local".
+
+% To enrich
+% the semantics of the decomposition process, we propose to not to limit it by just one iteration.
