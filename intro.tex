@@ -44,17 +44,25 @@ preference of child aspects within the \textit{context} of the parent aspect.
 
 % TODO: justify the novelty. We are not the first ones offering to tweak parts of the graph. Use the IMMOD article, it
 % offers a good explaination of why our work is valuable.
+We are by no means the first to offer using preference hierarchies to model decision-making in multi-agent systems
+\cite{cartvehishvili-2018-model}, \cite{drakaki-2018-intelligent}, neither are we in regard that we offer to tweak
+weights of that graph hierarchy to adjust agents' behavior \cite{zytniewski-2016-application},
+\cite{brintrup-2010-behaviour}. But to our best knowledge we are the first who offered to take advantage of that graph
+strcture and interpret it in the way that enables a translation and influence of high-level strategic objectives to
+low-level decision making done by individuals agents in the context of simulating a group coordination. And we have
+failed to find a similar implementation that performs weights adjustment in a distributed manned (which we will explain
+further). These two aspects of our work constitute, as we hope, the novelty that creates a modest advance in the realm
+of models for simulating group coordination.
 
-The aim of this research is to prototype the idea that has been formulated in our previous work.
-% TODO: reference to the work
-Since it is written in
-russian, we duplicate some parts of it describing the mechanism in order to give you the entire picture.
+The aim of this research is to prototype the idea that has been formulated in the previous work
+\cite{murashov-2021-ahp}. Since it is written in russian, we duplicate some parts of it describing the mechanism in
+order to give you the entire picture.
 
 %TODO: references
-The work follows the following structure. First, we explain the idea and offer an algorithm implementing it. We created
-a simulation based on the algorithm to have a proof of concept, so the next part is devoted to the details regarding how
-the simulation is implemented. And then we give a brief overview of the simulation's results, draw some conclusions, and
-offer ways of its further development.
+The structure of the paper reads as follows. First, we explain the idea and offer an algorithm implementing it. We
+created a simulation based on the algorithm to have a proof of concept, so the next part is devoted to the details
+regarding how the simulation is implemented. And then we give a brief overview of the simulation's results, draw some
+conclusions, and offer ways of its further development.
 
 We open-sourced the source code for the simulation \cite{github}. You are encouraged to examine, fork, modify, and use
 it in your projects as you see fit.
