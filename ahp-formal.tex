@@ -24,5 +24,20 @@ Here are notations used:
 \end{itemize}
 
 As an input, we have a preference graph (local graph) $\left< V, E, W \right>$ ($V$ - nodes, $E$ - edges, $W$ - weights)
-having $N$ levels. In the result, it is required to calculate $\fnmwasp N \fnmroot$ vector representing weights for
-actions adjusted for strategic preferences, and assign an agent whatever action has the max. weight.
+having $N$ levels. Weights for intermediate levels and the root are predefined, i.e. we have a set
+$\fnmsetind
+    {\fnmwasp{l}{\fnmnode{l-1}{i}}}
+    {i \in L_{l-1}, l = \fnmrange{1}{N-1}}
+$.
+
+In the result, it is required to calculate $\fnmwasp N \fnmroot$ vector representing weights for actions adjusted for
+strategic preferences, and assign an agent whatever action has the maximum weight. To achieve that we propose to use
+\textit{AHP} algorithm which enables to make an assessment using weights of 2 intermediate levels:
+%TODO: AHP, reference
+
+\begin{equation}
+    \fnmwasp a {\fnmnode {a-2} x} =
+    \fnmAhp
+        {\fnmSetWasp{a}{a-1}}
+        {\fnmwasp {a-1} {\fnmnode {a-2} x}}.
+\end{equation}
