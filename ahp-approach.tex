@@ -13,6 +13,7 @@
  %4. What triggers a decision making
 % 5. Although we use AHP, we do not emphasize use of this particular one
 % 6. The nature of the actions
+% 7. Who adjusts the strategy weights
 
 % TODO: plan
 % -- hierarchy of preferences
@@ -68,9 +69,18 @@ $\fnmalt$. This fact is at the core of the approach we propose which reads as fo
     \item Every agent has a predefined set of \textit{actions} assigned to it individually;
     \item Every agent has to select an action which it will perform for a certain timespan, therefore, every action is
         an alternative;
-    \item Those alternatives plus a shared graph form a local preference graph only visible for this agent;
+    \item Those alternatives plus the shared graph form a local preference graph only visible for this agent;
     \item Before every decision making iteration, the agent assesses alternatives $\fnmalt$ \textit{in the contexts} of
-        aspects $ \fnmasp{N-1} $ using its means of local situation assessment
+        aspects $ \fnmasp{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
+        it assessess them \textit{in the context of} node $C_{0,1}$. The action having the highest weight in the
+        resulting vector gets selected for the execution;
+    \item In parallel, some entity adjusts weights connecting the node $C_{0,1}$ thus setting strategic objectives.
 \end{itemize}
+
+In essense we have 2 classes of entities namely a coordinator and an executor. The coordinator changes the high-level
+weights of the shared graph visible to every agent, therefore, influences decisions of the latter. At the same time
+agents perform local situation assessments for their actions using their local graphs which are extensions over the
+dynamically changing shared one. Changes in the shared graph get fetched and used in an individual agent's reasoning
+process.
 
 % To enrich the semantics of the decomposition process, we propose to not to limit it by just one iteration.
