@@ -19,5 +19,25 @@
 \newcommand{\fnmnode}[2]{V_{#1,#2}}
 
 % Assessment in an aspect of a node, vector of weights
-% arg 1 -
+% arg 1 - level
+% arg 2 - node (the aspect)
 \newcommand{\fnmwasp}[2]{W_{#1}^{(#2)}}
+
+% Indexed set of elements
+% arg 1 - elements
+% arg 2 - subscription index
+\newcommand{\fnmsetind}[2]{\{ #1 \}_{#2}}
+
+% Set of weights
+% arg 1 - level for alternatives
+% arg 2 - level for context
+\newcommand{\fnmsetwasp}[2]{
+    \fnmsetind
+        {\fnmwasp{#1}{\fnmnode{#2}{i}}}
+        {i \in L_{#2}}
+}
+
+% Range
+% arg 1 - from
+% arg 2 - to
+\newcommand{\fnmrange}[2]{\overline{#1, #2}}
