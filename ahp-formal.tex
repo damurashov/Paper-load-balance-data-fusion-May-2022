@@ -1,0 +1,30 @@
+After the generic description and the main idea of the approach have been explained, let us suggest the algorithm for
+assessing the alternatives $\fnmalts$ in the context of node $\fnmroot$. And we start with laying out some definitions,
+constraints, and inputs most of which are intuitive but should be stated nonetheless.
+
+\begin{itemize}
+    % TODO: context
+    \item Local graph is a weighted oriented graph;
+    \item It has exactly one vertex without a parent (root); it also has vertices without children (alternatives);
+    \item For any 2 edges $(a,b)$, $(a,c)$, there exist no paths between $b$ and $c$ (so the local
+        graph can be divided into \textit{levels});
+    \item A node's \textit{level} is the max. number of edges that should be traversed from the root $\fnmroot$ to
+        achieve this node, or one of its peers;
+    \item There exists a path to any alternative from any node (so we can gradually build the
+        resulting vector level-by-level);
+\end{itemize}
+
+Here are notations used:
+
+\begin{itemize}
+    \item $\fnmnode i j$ denotes node $j$ of level $i$;
+    \item $\fnmwasp k {\fnmnode i j}$ denotes a weights vector representing assessment of all nodes of level
+        $k$ in the context of node $\fnmnode i j$;
+    \item $L_i$ denotes an index set for nodes of level $i$.
+\end{itemize}
+
+Input:
+
+\begin{itemize}
+    \item Preference graph (local graph) $\left< C, E, W \right>$ ($C$ - nodes, $E$)
+\end{itemize}
