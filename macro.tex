@@ -1,7 +1,8 @@
 % Naming conventions
-% <fn><m><NAME>
+% <fn><m|l><NAME>
 % fn - prefix to distinguish newly-defined commands. Stands for "function"
 % m - stands for "math". Indicates that it is used in the context of a $math expression$.
+% l - stands for "listing"
 
 % Alternatives (nodes)
 \newcommand{\fnmalts}{V_{N,1}, V_{N,2},\ldots}
@@ -50,3 +51,8 @@
 % arg 1 - from
 % arg 2 - to
 \newcommand{\fnmrange}[2]{\overline{#1, #2}}
+
+% Call a procedure
+% arg 1 - procedure name
+% arg 2 - arguments
+\newcommand{\fnlCall}[2]{$\gets\textsc{#1}(#2)$}
