@@ -46,4 +46,6 @@ strategic preferences, and assign an agent whatever action has the maximum weigh
 This property of the \textit{AHP} algorithm means that once lower-level weights (tactical assessment) have been
 estimated, we can calculate vector $\fnmwasp N \fnmroot$ by iteratively assessing the alternatives in contexts of
 vertices of levels $N-2$, $N-3$, and so on up to the root $\fnmroot$. It is possible since every alternative is
-reachable from any node, so we can assess alternatives in any context.
+reachable from any node, so we can assess alternatives in any context. So, when strategic reasoning, iterative weights
+assessment, and action selection based on this assessment are put together, the resulting algorithm for an agent
+takes the following form:
