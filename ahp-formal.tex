@@ -23,8 +23,6 @@ Here are notations used:
     \item $L_i$ denotes an index set for nodes of level $i$.
 \end{itemize}
 
-Input:
-
-\begin{itemize}
-    \item Preference graph (local graph) $\left< C, E, W \right>$ ($C$ - nodes, $E$)
-\end{itemize}
+As an input, we have a preference graph (local graph) $\left< V, E, W \right>$ ($V$ - nodes, $E$ - edges, $W$ - weights)
+having $N$ levels. In the result, it is required to calculate $\fnmwasp N \fnmroot$ vector representing weights for
+actions adjusted for strategic preferences, and assign an agent whatever action has the max. weight.
