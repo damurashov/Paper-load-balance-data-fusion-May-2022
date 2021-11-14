@@ -24,8 +24,6 @@
 % -- using AHP for this
 % -- the recursive algorithm implementing the idea
 
-
-
 In order to incorporate both strategic and tactical objectives into the decision making process we propose to represent
 the latter as a result of decomposing strategic ones. By that, we do not necessarily mean that tactical objectives have
 to be mutually exclusive components, represent dependencies or certain milestones, although that is probably an option.
@@ -55,31 +53,31 @@ alternatives. Adding alternatives will give us a full-fledged preference graph (
 \ref{fig:prefgraph-concept-shared} "shared" and the one in Figure \ref{fig:prefgraph-concept-local} "local".
 
 With use of a weighted preference graph, a decision is made through calculating a vector of weights representing
-valuability of each of the alternatives $\fnmalt$ \textit{in the context of} node $C_{0,1}$ which is
+valuability of each of the alternatives $\fnmalts$ \textit{in the context of} node $C_{0,1}$ which is
 achieved through iterative calculations involving intermediate nodes $C_{i,j}$, edges, and weights.
 
 Changing weights of any of the preference graph's edges will change the resulting vector calculated for the alternatives
-$\fnmalt$. This fact is at the core of the approach we propose which reads as follows:
+$\fnmalts$. This fact is at the core of the approach we propose which reads as follows:
 
 \begin{itemize}
     \item The structure of neither shared nor local graphs gets changed during the simulation;
-    \item Weights connecting the alternatives $\fnmalt$ and those connecting the node $C_{0,1}$ are the only ones that
+    \item Weights connecting the alternatives $\fnmalts$ and those connecting the node $C_{0,1}$ are the only ones that
         change during the simulation;
     \item Every agent may read the shared graph (Figure \ref{fig:prefgraph-concept-shared}), its weights and structure;
     \item Every agent has a predefined set of \textit{actions} assigned to it individually;
     \item Every agent has to select an action which it will perform for a certain timespan, therefore, every action is
         an alternative;
     \item Those alternatives plus the shared graph form a local preference graph only visible for this agent;
-    \item Before every decision making iteration, the agent assesses alternatives $\fnmalt$ \textit{in the contexts} of
-        aspects $ \fnmasp{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
+    \item Before every decision making iteration, the agent assesses alternatives $\fnmalts$ \textit{in the contexts} of
+        aspects $ \fnmasps{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
         it assessess them \textit{in the context of} node $C_{0,1}$. The action having the highest weight in the
         resulting vector gets selected for the execution;
     \item In parallel, some entity adjusts weights connecting the node $C_{0,1}$ thus setting strategic objectives.
 \end{itemize}
 
-In essense we have 2 classes of entities namely a coordinator and an executor. The coordinator changes the high-level
-weights of the shared graph visible to every agent, therefore, influences decisions of the latter. At the same time
-agents perform local situation assessments for their actions using their local graphs which are extensions over the
+In essense we have 2 classes of entities namely a coordinator and an executor. The coordinator changes the high-most
+level weights of the shared graph visible to every agent, therefore, influences decisions of the latter. At the same
+time agents perform local situation assessments for their actions using their local graphs which are extensions over the
 dynamically changing shared one. Changes in the shared graph get fetched and used in an individual agent's reasoning
 process.
 
