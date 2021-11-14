@@ -31,10 +31,19 @@
 % Set of weights
 % arg 1 - level for alternatives
 % arg 2 - level for context
-\newcommand{\fnmsetwasp}[2]{
+\newcommand{\fnmSetWasp}[2]{
     \fnmsetind
-        {\fnmwasp{#1}{\fnmnode{#2}{i}}}
-        {i \in L_{#2}}
+        % Content of  a set
+        {\fnmwasp{#1}{\fnmnode{#2}{vert_{ #2 }}}}
+        % Index
+        {vert_{ #2 } \in L_{#2}}
+}
+
+% Short for for AHP
+% arg1 - arg. #1 for AHP
+% arg2 - arg. #2 for AHP
+\newcommand{\fnmAhp}[2]{
+    \mathbf{AHP}(#1, #2)
 }
 
 % Range
