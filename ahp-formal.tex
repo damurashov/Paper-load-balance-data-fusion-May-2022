@@ -55,15 +55,40 @@ takes the following form:
     \label{lst:agent-reason}
 
     \begin{algorithmic}[1]
-        \State \textbf{Input:} $\fnmsetind {\fnmwasp{l}{\fnmnode{l-1}{i}}} {i \in L_{l-1}, l = \fnmrange{1}{N-1}} $
-        \State \textbf{Input:} \textbf{procedure} \fnlCall{AHP}{2}
+        \State {\textbf{Input:} $\fnmsetind {\fnmwasp{l}{\fnmnode{l-1}{i}}} {i \in L_{l-1}, l = \fnmrange{1}{N-1}} $}
+        \State {\textbf{Input:} \textbf{procedure} \fnlCall{AHP}{2}}
+        \State {\textbf{Input:} \textbf{procedure} \fnlCall{assessTactical}{}}
+        \State {\textbf{Input:} \textbf{procedure} \fnlCall{perform}{1}}
+        \State {\textbf{Input:} $\left< V, E, W \right>$ local graph}
+
         \\
+
         \Procedure{assess}{$\fnmSetWasp{N}{k}$, k}
-            \If{k = 1} \Comment{The root node has been reached}
+
+        \\ \Comment{The root node has been reached}
+
+            \If{k = 1}
                 \State {\textbf{return} \fnlCall{AHP}{$\fnmSetWasp{N}{k}$, $\fnmwasp{1}{\fnmroot}$}}
+
+                \\ \Comment{Assessing the alternatives $N$ in}
+                \\ \Comment{higher-level contexts (decreasing $k$)}
             \Else
                 \State {\textbf{return} \fnlCall{assess}{$\big\{ \fnlCall{AHP}{\fnmSetWasp{N}{k}, \fnmwasp{k}{\fnmnode{k-1}{i}}} \big\}_{i \in L_{k-1} }$, k-1}}
             \EndIf
         \EndProcedure
+
+        \\
+
+        \Procedure{run}{}
+            \While{simulationContinues}
+                \State{ $\fnmSetWasp{N}{N-1} \gets \fnlCall{assessTactical}{}$ }
+                \State{ $W \gets W \cup \fnmSetWasp{N}{N-1}$ }
+                \State{ weights $\gets \fnlCall{assess}{\big\{ \fnlCall{AHP}{\fnmSetWasp{N}{N-1}, \fnmwasp{N-1}{\fnmnode{N-2}{i}}} \big\}_{i \in L_{N-2} }$, N-2}}
+                \\ \Comment{weights = $(w_1,w_2,...)$}
+                \State{action $\gets \arg_{w_i} \max$ weights}
+                \State{\fnlCall{perform}{action}}
+            \EndWhile
+        \EndProcedure
+
     \end{algorithmic}
 \end{algorithm}
