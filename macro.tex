@@ -1,6 +1,23 @@
+% Naming conventions
+% <fn><m><NAME>
+% fn - prefix to distinguish newly-defined commands. Stands for "function"
+% m - stands for "math". Indicates that it is used in the context of a $math expression$.
+
 % Alternatives (nodes)
 \newcommand{\fnmalts}{C_{N,1}, C_{N,2},\ldots}
 
 % Aspects (nodes)
 % arg 1 - indentifier of the level the nodes pertain to
 \newcommand{\fnmasps}[1]{C_{#1,1}, C_{#1,2}, \ldots}
+
+% Root node
+\newcommand{\fnmroot}{C_{0,1}}
+
+% Node
+% arg 1 - level
+% arg 2 - id
+\newcommand{\fnmnode}[2]{C_{#1,#2}}
+
+% Assessment in an aspect of a node, weights
+% arg 1 -
+\newcommand{\fnmwasp}[2]{W_{#1}^{(#2)}}
