@@ -47,10 +47,10 @@ This property of the \textit{AHP} algorithm means that once lower-level weights 
 estimated, we can calculate vector $\fnmwasp N \fnmroot$ by iteratively assessing the alternatives in contexts of
 vertices of levels $N-2$, $N-3$, and so on up to the root $\fnmroot$. It is possible since every alternative is
 reachable from any node, so we can assess alternatives in any context. So, when strategic reasoning, iterative weights
-assessment, and action selection based on this assessment are put together, the resulting algorithm for an agent
-takes the following form:
+assessment, and action selection based on this assessment are put together, the resulting algorithm for an agent will
+look as shown in Listing \ref{lst:agent-reason}
 
-\begin{algorithm}
+\begin{algorithm}[h!]
     \floatname{algorithm}{Listing}
     \caption{Agent's reasoning process}
     \label{lst:agent-reason}
