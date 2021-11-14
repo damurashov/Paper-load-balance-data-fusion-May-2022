@@ -1,0 +1,33 @@
+We have created a simulation where we generate agents in a random manner (Table \ref{tab:sim-parameters}). The setup for
+simulation has been saved and published in the repository \cite{github}, so you can re-run the simulation or generate a
+new one.
+%TODO: table reference
+
+\begin{table}[h!]
+    \centering
+    \caption{Simulation parameters}
+    \label{tab:sim-parameters}
+
+    \begin{tabular}[hbt!]{c c}
+        Parameter & Value\\
+        \hline
+        Number of $Hitter$s overall & 50 \\
+        Number of $Resource$s overall & 20 \\
+        Number of teams overall & 2 \\
+        Number of $Hitter$s in "this" team & 17 \\
+        Space & $([0;8] \subseteq \mathbb{R} \times [0;8] \subseteq \mathbb{R}$, manhattan distance $)$ \\
+        Agents' position generator & Uniform for both dimensions \\
+        $Hitter$s' energy generation & $\mathcal{N} (5,1)$ \\
+        $Resource$s' energy generation & $\mathcal{N} (5,1)$ \\
+        $P_{GnEnWt}$ & 0.02\\
+        $P_{LsenMv}$ & 0.05\\
+        $P_{Sp}$     & 0.2\\
+        $P_{LsEnAg}$ & 0.05\\
+        $P_{GnEnWn}$ & 0.6\\
+        $P_{GnRsWn}$ & 0.3\\
+        $P_{LsRsLs}$ & 2\\
+        $P_{GnEn}$   & 0.5\\
+        $P_{GnRs}$   & 0.5\\
+
+    \end{tabular}
+\end{table}
