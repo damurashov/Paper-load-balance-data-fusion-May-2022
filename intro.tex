@@ -1,29 +1,31 @@
-Multi agents systems and comlexity that goes along can be a source of a great excitement. It is remarkable how a system
+Multi agent systems and comlexity that goes along can be a source of a great excitement. It is remarkable how a system
 comprising a set of agent with very limited capabilities to reasoning and decision making produces outstandingly good
 solutions to very difficult problems. From global economy to simulated ant colonies, small agents applying their best
 judgement and acting in their own best interst get things done, sometimes as gracefully as no well organized and
 well-financed think tank on the entire Earth could ever do. It has been known for quite a long time that a beautiful
 whirl of a seemingly chaotic swarm of mostly independent agents can make solutions emerge.
 
-Have we had solutions just appear by themselves, this world would not be half as spectacular. Need for problems to be
-solved and absense of low-hanging answers to our problems stimulate us to form structures and impose objectives on them,
-and as for multi agent ones we have two ways to go. The first is to set agents up and let things happen. As appealing as
-it is and as
+But have we had solutions just appear by themselves, this world would not be half as spectacular. Need for problems to
+be solved and absense of low-hanging answers to our problems stimulate us to form structures and impose objectives on
+them, and as for multi agent ones we have two ways to go. The first is to set agents up and let them figure out a
+strategy. As appealing as it is and as
 %TODO: "as it can be": ant colonies, ANNs
-effective as it can be, this approach does not always deliver the outcomes we want. The second one is to create a rigid
-system of absolute control. When creating a PID controller for a thermostat, this is exactly what we want. But for
-bigger systems, this approach may fall due to lack of flexibility, and in systems involving people, it
-does so with dire consequences.
+effective as it can be \cite{dorigo-2006}, we sometimes need something of a bigger certainty meaning that we want to
+express the objective in a more straightworward way. The second one is to create a rigid system of absolute control.
+When creating a PID controller for a thermostat, this is exactly what we want. But for bigger systems, this approach may
+fall due to lack of flexibility, and in systems involving people, it does so with dire consequences to say the least
+\cite{khlevniuk-2004}.
 
-The advantage of the option in between those two extremes is arguably the flexibility it has. We can roughly delineate
-two aspects in the process of that flexible group decision making: strategic and tactic. The first one is all about
+The advantage of options in between those two extremes is arguably the flexibility it has. We can roughly delineate two
+aspects in the process of that flexible group decision making: strategic and tactic. The first one is all about
 so-called "big picture". Some entity that is entitled to establish the direction of the group's strategy, given that it
 has all the necessary information, can reason in bigger-scale terms and define the general course of action for the
 entire group. However, it cannot (and should not) oversee all the details of the strategy's particular implementation
 instances. It is better to delegate this part of decision making to smaller groups or individual agents. There is no
-one-size-fits-all solutions in systems comprising multiple entities, and some are better made in an ad-hoc manner.
+one-size-fits-all solutions in systems comprising multiple entities, and some decisions are better made in an ad-hoc
+manner.
 % TODO: "some" what?
-Situational awareness of individual agents may and often does possesses very valuable information that sure should be
+Situational awareness of individual agents may and often does possess very valuable information that sure should be
 considered before a decision is made.
 
 The question is how do we reconcile the necessity to adhere to the global strategy, and yet at the same time do not make
@@ -39,21 +41,21 @@ hope that further development of the idea will make practical results come to fr
 
 The approach to simulating group control that we mentioned is based on using a weighted graph of preference hierarchy
 higher levels of which "map" to strategic objectives, while lower levels do so to tactical ones. Nodes of the graph
-which we call "aspects" are interpreted as parts of the general objective; edges' weights connecting aspects represent
-preference of child aspects within the \textit{context} of the parent aspect.
+which we call "aspects" are interpreted as parts of the general objective; edges' weights represent preference of a
+child node that is connected by the edge in the \textit{context} of the parent aspect.
 
 We are by no means the first to offer using preference hierarchies to model decision-making in multi-agent systems
 \cite{cartvehishvili-2018-model}, \cite{drakaki-2018-intelligent}, neither are we in regard that we offer to tweak
 weights of that graph hierarchy to adjust agents' behavior \cite{zytniewski-2016-application},
 \cite{brintrup-2010-behaviour}. But to our best knowledge we are the first who offered to take advantage of that graph
-strcture and interpret it in the way that enables a translation and influence of high-level strategic objectives to
-low-level decision making done by individuals agents in the context of simulating a group coordination. And we have
-failed to find a similar implementation that performs weights adjustment in a distributed manned (which we will explain
-further). These two aspects of our work constitute, as we hope, the novelty that creates a modest advance in the realm
-of models for simulating group coordination.
+strcture and interpret it in the way that enables a translation of strategic objectives into tactical and influence of
+high-level strategic objectives to low-level decision making done by individuals agents in the context of simulating a
+group coordination. And we have failed to find a similar implementation that performs weights adjustment in a
+distributed manned (which we will explain further). These two aspects of our work constitute, as we hope, the novelty
+that creates a modest advance in the realm of models for simulating group coordination.
 
 The aim of this research is to prototype the idea that has been formulated in the previous work
-\cite{murashov-2021-ahp}. Since it is written in russian, we duplicate some parts of it describing the mechanism in
+\cite{murashov-2021-ahp}. Since it is written in russian, we re-explain some parts that describe the mechanism in
 order to give you the entire picture.
 
 %TODO: references
@@ -62,5 +64,5 @@ created a simulation based on the algorithm to have a proof of concept, so the n
 regarding how the simulation is implemented. And then we give a brief overview of the simulation's results, draw some
 conclusions, and offer ways of its further development.
 
-We open-sourced the source code for the simulation \cite{github}. You are encouraged to examine, fork, modify, and use
+We open-sourced the code for the simulation \cite{github}. You are encouraged to examine, fork, modify, and use
 it in your projects as you see fit.

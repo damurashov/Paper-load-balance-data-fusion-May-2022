@@ -28,7 +28,7 @@ In order to incorporate both strategic and tactical objectives into the decision
 the latter as a result of decomposing strategic ones. By that, we do not necessarily mean that tactical objectives have
 to be mutually exclusive components, represent dependencies or certain milestones, although that is probably an option.
 It implies that any lower-level objective may be a part of two or more higher-level ones. This decomposition can be
-represented as a hierarchy of preferences or weighted preference graph (Figure \ref{fig:prefgraph-concept-shared}).
+represented as a hierarchy of preferences or a weighted preference graph (Figure \ref{fig:prefgraph-concept-shared}).
 %TODO: ref figure
 %TODO: ref preference graph
 
@@ -48,13 +48,13 @@ represented as a hierarchy of preferences or weighted preference graph (Figure \
 \end{figure}
 
 However, this graph (Figure \ref{fig:prefgraph-concept-shared}) is only a part of a preference graph as it lacks
-alternatives. Adding alternatives will give us a full-fledged preference graph (Figure
+alternatives. Adding alternatives will give us the full-fledged preference graph (Figure
 \ref{fig:prefgraph-concept-local}). For reasons that will soon become obvious we call the graph in Figure
 \ref{fig:prefgraph-concept-shared} "shared" and the one in Figure \ref{fig:prefgraph-concept-local} "local".
 
-With use of a weighted preference graph, a decision is made through calculating a vector of weights representing
+With use of the weighted preference graph, a decision is made through calculating a vector of weights representing
 valuability of each of the alternatives $\fnmalts$ \textit{in the context of} node $\fnmroot$ which is
-achieved through iterative calculations involving intermediate nodes $C_{i,j}$, edges, and weights.
+achieved through iterative calculations involving intermediate nodes $\fnmnode i j$, edges, and weights.
 
 Changing weights of any of the preference graph's edges will change the resulting vector calculated for the alternatives
 $\fnmalts$. This fact is at the core of the approach we propose which reads as follows:
@@ -64,15 +64,17 @@ $\fnmalts$. This fact is at the core of the approach we propose which reads as f
     \item Weights connecting the alternatives $\fnmalts$ and those connecting the node $\fnmroot$ are the only ones that
         change during the simulation;
     \item Every agent may read the shared graph (Figure \ref{fig:prefgraph-concept-shared}), its weights and structure;
-    \item Every agent has a predefined set of \textit{actions} assigned to it individually;
+    \item Every agent has a predefined set of \textit{actions} assigned to it specifically;
     \item Every agent has to select an action which it will perform for a certain timespan, therefore, every action is
-        an alternative;
-    \item Those alternatives plus the shared graph form a local preference graph only visible for this agent;
+        mapped to the preference graph;
+    \item Those alternatives plus the shared graph form the local preference graph only visible for this agent (hence
+        the name "local");
     \item Before every decision making iteration, the agent assesses alternatives $\fnmalts$ \textit{in the contexts} of
         aspects $ \fnmasps{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
         it assessess them \textit{in the context of} node $\fnmroot$. The action having the highest weight in the
         resulting vector gets selected for the execution;
-    \item In parallel, some entity adjusts weights connecting the node $\fnmroot$ thus setting strategic objectives.
+    \item In parallel, some entity adjusts weights connecting the node $\fnmroot$ which we interpret as setting
+        strategic objectives.
 \end{itemize}
 
 In essense we have 2 classes of entities namely a coordinator and an executor. The coordinator changes the high-most
@@ -82,9 +84,9 @@ dynamically changing shared one. Changes in the shared graph get fetched and use
 process.
 
 Despite the fact that necessity to adjust strategic objectives by tweaking high-level weights implies that there should
-be some entity that does so, we do not elaborate on details of its implementation. Neither do we reveal how exactly
-agents' tactical reasoning processes are implemented, what are the rules of decomposing an ultimate goal that the swarm
+be some entity that does so, we do not elaborate on its implementation. Neither do we reveal how exactly agents'
+tactical reasoning processes are implemented, what are the rules of decomposing an ultimate goal that the swarm
 pursuits, what triggers a decision making process, and for how long an agent executes an action. Those are extension
-points to a particular implementation, and we leave it beyond consideration.
+points to a particular implementation, and we do not consider those here.
 
 % To enrich the semantics of the decomposition process, we propose to not to limit it by just one iteration.

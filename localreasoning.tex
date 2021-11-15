@@ -6,7 +6,7 @@ model we will be able to run a simulation and see how the mechanism performs, th
 
 In essence, what is required to be done here is to model a way how an agent assesses the impact of its "hit", "run",
 "gather", or "idle" actions in terms of "enemy resource deprivation", "resource acquisition", and other contexts (Figure
-\ref{fig:df-models}). Here is the tuple we employ to represent the model formally:
+\ref{fig:prefgraph-simulation}). Here is the tuple we employ to represent the model formally:
 
 \begin{equation}
     \begin{gathered}
@@ -18,14 +18,14 @@ In essence, what is required to be done here is to model a way how an agent asse
 \begin{itemize}
     \item $P$ is a set of model \textit{properties},
     \item $Act = \{Run, Gather, Hit, Idle\}$ is a set of \textit{actions},
-    \item $Asp = \{ ERD, RA, EW, SA, SS, RS \}$ is a set of \textit{aspects}; the abbreviations are composed using first letters of strategic aspects (Figure \ref{fig:df-models}),
+    \item $Asp = \{ ERD, RA, EW, SA, SS, RS \}$ is a set of \textit{aspects}; the abbreviations are composed using first letters of strategic aspects (Figure \ref{fig:prefgraph-simulation}),
     \item $E \subseteq \mathbb{R}$ is an \textit{"attribute"} representing energy of an agent,
     \item $Tp = \{Resource, Hitter \}$ is a type of an agent,
     \item $T \subseteq \mathbb{Z}$ is the number of ticks spent by the time the gain function is being calculated counting from the beginning of a current iteration,
     \item $G_{t, a}^{(Int)}$ is the gain function.
 \end{itemize}
 
-Here is the list of the elements of the model's properties set $P$. The properties are chosen once and remain stable
+Here is the list of the model's properties (set $P$). The properties are chosen once and remain stable
 during the simulation:
 
 \begin{itemize}
@@ -64,10 +64,10 @@ implied. This makes for clearer score interpretation in the context of AHP prefe
 for simpler weights normalization, on the other.
 
 Scores for $SS$ and $RS$ aspects are represented as a \textit{loss score} to the power of $-1$. $G_{t,a}^{(Int)}$ values
-for "saving" aspects are calculated the same way as it will be demonstrated. So in essence this is reasoning in terms of
+for "saving" aspects are calculated the same way which will be demonstrated. So in essence this is reasoning in terms of
 loss minimization. This inversion of units here does not create distortions from the standpoint of dimensional analysis
-because all the scores for $Idle$, $Hit$, and other actions are "contained" within one aspect and expressed in the same
-units.
+because all the scores for $Idle$, $Hit$, and other actions are "contained" within one aspect and are expressed in the
+same units.
 
 Interaction score $G_t^{(Int)}$ counting is way more interesting. We employed brobabilistic reasoning here along with
 penalties for aggressive behavior, i.e. when an agent is in $Hit$ state, and also adjustments of energy for already
@@ -80,8 +80,8 @@ Ticks spent during a current iteration are taken into account in the form of ene
 represent "this" and "the other" agents' energy values before the interation. As for interactions between agents from
 different teams, the gained scores from the interactions are calculated using probabilities of win of this $p^{(win)}$
 and win of the other $p^{(win)}_a$ agent. Also, this agent cannot know what state the other agent will be in by the
-moment of interaction. Therefore, every possiblility is considered equally probable. So the interaction outcome is
-calculated as an expected value for 4 equally probable states of the other agent.
+moment of interaction. Therefore, options are considered equally probable. So the interaction outcome is calculated as
+an expected value for 4 equally probable states of the other agent.
 
 \begin{equation*}
     \begin{gathered}
@@ -124,8 +124,8 @@ The last thing that should be said about low-level agents' reasoning is how a se
 equation (\ref{eq:expected-gain}) is formed. It follows quite simple rules. Other agents should not be from the same
 team as this agent. Speed of this agent is derived from its activity ($0$ or $P_Sp$). Speed of the other agent is always
 considered $P_Sp$. The number of ticks $N_t$ this agent has in its disposal is adjusted for the energy value of this
-agent, and it depends on the parameter $P_LsEnMv$. If this agent is in $Gather$ state, all reachable rival agents are of
-interest for this agent. Otherwise, this is the case only for rival agents of type $Hitter$. These rules seem obvious
-and straightforward as we all have spatial intuition, therefore, we omit the mathematical form of those for compactness
-and simplicity. You may look for formation of the set of reachable (of rather interactable) agents in the source code
-for this simulation \cite{github}.
+agent, and it depends on the parameter $P_LsEnMv$. If this agent is in $Gather$ state, all reachable rival agents of
+type $Hitter$ and $Resource$ agents are of interest for this agent. Otherwise, this is the case only for rival agents of
+type $Hitter$. These rules seem obvious and straightforward as we all have spatial intuition, therefore, we omit the
+mathematical form of those for compactness and simplicity. You may look for formation of the set of reachable (of rather
+interactable) agents in the source code for this simulation \cite{github}.
