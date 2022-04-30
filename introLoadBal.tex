@@ -14,8 +14,8 @@ In this paper, we frame load balancing as the problem of swarm coordination.
 %TODO: (1) ref. Saaty, (2) ref Gorodetsky
 At the core of our approach, lays the idea to use AHP algorithm.
 %TODO: chech whether we provide the definition for "level"
-Adjusting various "levels" of AHP's preference hierarchy graph makes it possible to influence final decisions.
-We propose to assign agents with roles, and associate each role with a part of the shared graph.
+With AHP algorithm, the final decision can be influenced through adjusting weights of its preference hierarchy graph.
+We propose to share this graph between agents, assign agents with roles, and associate each role with a part of the shared graph.
 The associated chunk of the graph (its weights, to be precise) may be changed locally or globally, thus shifting the final decision an agent would make in one direction or another.
 
 % TODO: previous works (won't be done here)
@@ -25,5 +25,5 @@ But to our best knowledge we are the first who offered to take advantage of that
 And we have failed to find a similar implementation that performs weights adjustment in a distributed manned.
 
 % TODO: reference respective sections
-The structure of this paper reads as follows. We first describe the algorithm of distributed decision making through use of AHP algorithm.
+The structure of this paper reads as follows. We first describe the algorithm of distributed decision making.
 Using this as a foundation, we then step on to the second part of the approach, where we explain how this algorithm can be applied to the load balancing problem.
