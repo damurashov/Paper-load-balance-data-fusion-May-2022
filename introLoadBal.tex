@@ -1,0 +1,23 @@
+% Tether to "load balancing" topic
+% Reference the previous works: (1) Gorodetsky, load balancing, pass to a neighbour, (2) my paper w/ ahp
+
+There exists a plethora of algorithms solving the problem of load balancing in heterogeneous networks \cite{gamal-2019}, \cite{adhikari-2018}, including those with dynamic topologies \cite{sahoo-2020}, \cite{zhang-2018}.
+However, many of load balancing algorithms only offer solutions to some narrow aspect of the problem, such as uniform distribution of load, or achieving a match between a node's computational capabilities and the task that it supposed to run.
+Moreover, a significant part of currently used enterprise solutions, such as Kubernetes \cite{kubernet17}, extensively rely on engineeric heuristics.
+Patching imperfections of the real world with non-generalizable ad-hoc solutions is an inevitable part of any engineering process.
+However, it would be helpful to have a theoretical foundation flexible enough to be applicable in this domain, but at the same time not too rigid so it leaves a room for necessary technical amendments.
+
+In this paper, we frame load balancing as the problem of swarm coordination.
+At the core of our approach, lays the idea to use AHP \cite{saaty-2008} algorithm.
+%TODO: chech whether we provide the definition for "level"
+With AHP algorithm, the final decision can be influenced through adjusting weights of its preference hierarchy graph.
+We propose to share this graph between agents, assign agents with roles, and associate each role with a part of the shared graph.
+The associated chunk of the graph (its weights, to be precise) may be changed locally or globally, thus shifting the final decision an agent would make in one direction or another.
+
+We are by no means the first to offer using preference hierarchies to model decision-making in multi-agent systems \cite{cartvehishvili-2018-model}, \cite{drakaki-2018-intelligent}, neither are we in regard that we offer to tweak weights of that graph hierarchy to adjust agents' behavior \cite{zytniewski-2016-application}, \cite{brintrup-2010-behaviour}.
+But to our best knowledge we are the first who offered to take advantage of that graph strcture and interpret it in the way that enables a translation of strategic objectives into tactical ones and influence of high-level strategic objectives on low-level decision making done by individual agents in the context of simulating a group coordination.
+And we have failed to find a similar implementation that performs weights adjustment in a distributed manned.
+
+% TODO: reference respective sections
+The structure of this paper reads as follows. We first describe the algorithm of distributed decision making.
+Using this as a foundation, we then step on to the second part of the approach, where we explain how this algorithm can be applied to the load balancing problem.
