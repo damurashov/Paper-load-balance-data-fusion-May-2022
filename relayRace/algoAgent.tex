@@ -1,0 +1,40 @@
+\begin{algorithm}[h!]
+    \floatname{algorithm}{Listing}
+    \caption{Agent's reasoning process}
+    \label{lst:agent}
+
+    \begin{algorithmic}[1]
+        \State {\textbf{Input:} $G'_a$}
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{AHP}{2}}
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{assessTactical}{}}
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{performAction}{1}}
+
+        \\
+
+        \Procedure{assess}{$\immodFnmSetWaspC {N_a}kx$, k}
+            \If{k = 1}
+                \State {\textbf{return} \immodFnlCall{AHP}{$\immodFnmSetWaspC{N_a}kx$, $\immodFnmwasp{1}{\immodFnmroot}$}}
+
+            \Else
+				\State { T $\gets \immodFnmAhpSet {N_a} k {k-1} x i$ }
+                \State {\textbf{return} \immodFnlCall{assess}{T, k-1}}
+            \EndIf
+        \EndProcedure
+
+        \\
+
+        \Procedure{run}{}
+            \While{simulationContinues}
+                \State{ $W_a \gets \immodFnlCall{assessTactical}{}$ }
+                \State{ T $\gets \immodFnmAhpSet N {N-1} {N-2} x y$}
+                \State{ Wg $\gets$ \immodFnlCall{assess}{T, N-2}}
+
+                \\ \Comment{Wg = $(w_1,w_2,...w_i)$}
+
+                \State{ A $\gets \underset{i}{\arg} \max $ Wg }
+                \State{\immodFnlCall{performAction}{A}}
+            \EndWhile
+        \EndProcedure
+
+    \end{algorithmic}
+\end{algorithm}
