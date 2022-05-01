@@ -4,7 +4,7 @@ Each agent in the network implements the following decision-making algorithm.
 It decides whether it should pass the task further to one of its neighbours, or hold it.
 The decision is based on assessing the amount of tasks the agent's neighbours happen to run at the moment, in other words, how much they are loaded.
 If there is no adjacent node with the amount of tasks less than that of the decision-making agent, the latter keeps the task.
-Otherwise, it passes the task to the least loaded neighbour.
+Otherwise, it passes the task to its least loaded neighbour.
 An experiment has shown that over time, tasks become uniformly distributed across the network.
 
 However, this algorithm is not flexible enough, since it only enables optimizing against one objective.
@@ -15,11 +15,11 @@ Moreover, the relative importance of those criterion to one another usually chan
 %TODO: "our"
 In our previous work \cite{murashov-2022}, we have devised an approach that combines AHP algorithm with the aforementioned "relay race".
 A simulation has shown that the approach, indeed, enables on-demand fine tuning of the load balancing process without any direct intervention, while retaining all the advantages of the original algorithm.
+
 However, the created model lacked separation of roles.
 Agents could only use a pre-defined preference hierarchy graph without adjusting its weights, and make pass-or-keep decisions using a simple computational scheme.
-
 Although this scheme is able to ensure that a network acquires the desired qualities of load distribution, or metrics of energy efficiency, pre-defined preferences still apply to the entire network.
 Real world networks are highly dynamic, so it is not possible to devise a simple all-encompassing policy for each and every part of a cluster.
 Some nodes appear, while other ones detach from the network.
-So it would be helpful to have a model enabling reasoning while leaving local decision making to individual agents (nodes).
+So it would be helpful to have a model enabling high-level reasoning while leaving local decision making to individual agents (nodes).
 % new node - load gap - old policy
