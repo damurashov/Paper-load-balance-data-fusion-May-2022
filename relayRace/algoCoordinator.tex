@@ -1,0 +1,21 @@
+\begin{algorithm}
+    \floatname{algorithm}{Listing}
+    \caption{Coordinator's reasoning process}
+    \label{lst:coordinator}
+
+    \begin{algorithmic}[1]
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{assessStrategic}{0}}
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{updateRequired}{0}}
+
+        \\
+
+        \Procedure{run}{}
+            \While{simulationContinues}
+                \If{\immodFnlCall{updateRequired}{}}
+                    \State{ $W \gets $ \immodFnlCall{assessStrategic}{} }
+                \EndIf
+            \EndWhile
+        \EndProcedure
+    \end{algorithmic}
+
+\end{algorithm}
