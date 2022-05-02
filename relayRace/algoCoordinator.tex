@@ -6,13 +6,21 @@
     \begin{algorithmic}[1]
         \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{assessStrategic}{0}}
         \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{updateRequired}{0}}
+        \Comment{Change in the global graph's upper level weights is required}
+        \State {\textbf{Input:} \textbf{procedure} \immodFnlCall{checkGotTask}{0}}
+        \Comment{A new task has arrived}
+        \State {\textbf{Input:} node}
+        \Comment{Any node from the cluster}
 
         \\
 
         \Procedure{run}{}
-            \While{simulationContinues}
+            \While{running}
                 \If{\immodFnlCall{updateRequired}{}}
                     \State{ $W \gets $ \immodFnlCall{assessStrategic}{} }
+                \EndIf
+                \If{task $\leftarrow$ \immodFnlCall{checkGotTask}{}}
+                    \State{node.\immodFnlCall{onDecision}{task}}
                 \EndIf
             \EndWhile
         \EndProcedure
