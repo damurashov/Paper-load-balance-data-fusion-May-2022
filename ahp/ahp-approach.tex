@@ -56,7 +56,7 @@ With use of the weighted preference graph, a decision is made through calculatin
 valuability of each of the alternatives $\fnmalts$ \textit{in the context of} node $\fnmroot$ which is
 achieved through iterative calculations involving intermediate nodes $\fnmnode i j$, edges, and weights.
 
-Changing weights of any of the preference graph's edges will change the resulting vector calculated for the alternatives
+Changing weights of any one of the preference graph's edges will change the resulting vector calculated for the alternatives
 $\fnmalts$.
 
 The following is a brief summary of our approach's key points.
@@ -69,7 +69,7 @@ The following is a brief summary of our approach's key points.
     \item Every agent has a predefined set of \textit{actions} assigned to it specifically;
     \item Every agent has to select an action which it will perform for a certain timespan, therefore, every action is
         mapped to the preference graph;
-    \item Those alternatives plus the shared graph form the local preference graph only visible for this agent (hence
+    \item Those alternatives, plus the shared graph form the local preference graph only visible for this agent (hence
         the name "local");
     \item Before every decision making iteration, the agent assesses alternatives $\fnmalts$ \textit{in the contexts} of
         aspects $ \fnmasps{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
