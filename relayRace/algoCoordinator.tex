@@ -18,9 +18,11 @@
             \While{running}
                 \If{\immodFnlCall{updateRequired}{}}
                     \State{ $W \gets $ \immodFnlCall{assessStrategic}{} }
+                    \Comment{Update higher-level weights}
                 \EndIf
                 \If{task $\leftarrow$ \immodFnlCall{checkGotTask}{}}
                     \State{node.\immodFnlCall{onDecision}{task}}
+                    \Comment{Pass the task}
                 \EndIf
             \EndWhile
         \EndProcedure
