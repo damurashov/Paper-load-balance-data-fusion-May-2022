@@ -7,7 +7,7 @@ Moreover, a significant part of currently used enterprise solutions, such as Kub
 Patching imperfections of the real world with non-generalizable ad-hoc solutions is an inevitable part of any engineering process.
 However, it would be helpful to have a theoretical foundation flexible enough to be applicable in this domain, but at the same time not too rigid so it leaves a room for necessary technical amendments.
 
-In this paper, we frame load balancing as the problem of swarm coordination, and propose a way to solve it while fusing higher level cluster management objectives into lower-level automated decision making performed by either a single agent.
+In this paper, we frame load balancing as the problem of swarm coordination, and propose a way to solve it while fusing higher level cluster management objectives (i.e. strategic goals) into lower-level automated decision making performed by an agent.
 % TODO: ref. Gorodetsky
 At the core of our approach, lays the idea to use AHP \cite{saaty-2008} algorithm combined with a "relay race" load balancing approach described in \cite{gorodetskii-2012}.
 %TODO: chech whether we provide the definition for "level"
@@ -16,7 +16,7 @@ We propose to share this graph between agents, assign agents with roles, and ass
 The associated chunk of the graph (its weights, to be precise) may be changed locally or globally, thus shifting the final decision an agent would make in one direction or another.
 
 We are by no means the first to offer using preference hierarchies to model decision-making in multi-agent systems \cite{cartvehishvili-2018-model}, \cite{drakaki-2018-intelligent}, neither are we in regard that we offer to tweak weights of that graph hierarchy to adjust agents' behavior \cite{zytniewski-2016-application}, \cite{brintrup-2010-behaviour}.
-But to our best knowledge we are the first who offered to take advantage of that graph strcture and interpret it in the way that enables a translation of strategic objectives into tactical ones and influence of high-level strategic objectives on low-level decision making done by individual agents in the context of simulating a group coordination.
+But to our best knowledge we are the first who offered to take advantage of that graph strcture and interpret it in the way that enables a translation of strategic objectives into tactical ones and influence of high-level strategic objectives on low-level decision making.
 And we have failed to find a similar implementation that performs weights adjustment in a distributed manned.
 
 % TODO: reference respective sections
