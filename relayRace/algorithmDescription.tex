@@ -1,11 +1,11 @@
 Once an agent has received "high-level" weights, it must update its local preference hierarchy graph.
 Then based local observations, it updates its lower-level weights representing relative importance of criterion that constitute efficiency and performance.
-After that it should update the list of its neighbours, assess them against lower-level criterion (taking features of the task to be assigned into consideration), and make the decision on whether to pass the task to some other node, or run it now.
+After that it should update the list of its neighbours, assess them against lower-level criterion (while taking features of the task to be assigned into consideration), and make the decision on whether to pass the task to some other node, or run it now.
 
 We will not elaborate on how exactly assessments in the context of a criteria can be done, because this topic is complicated enough to be a research of its own.
 But probably the best (the most practical) way to do so is to devise a set of heuristic measures.
-Success of the aforementioned "Kubernetes" which uses time-proven engineeric heuristics suggests that the lack of solid theoretical foundations in this particular aspect will not be too much of an impediment.
+Success of the aforementioned "Kubernetes" which uses engineeric heuristics suggests that the lack of solid theoretical foundations in this particular aspect will not be too much of an impediment.
 
 % TODO: ref listing
 
-Asynchronously with network nodes, a coordinator (let us call it "Scheduler") performs the following set of operations. It monitors the network state and infers weights for higher levels of the preference hierarchy. Occasionally, it receives a task and passes it to a random agent of the network.
+Asynchronously with network nodes, a coordinator (let us call it "Scheduler") performs the following set of operations. It monitors the network state and infers weights for higher levels of the preference hierarchy. Occasionally, it receives a task and passes it to any node (which may remain the same every time).
