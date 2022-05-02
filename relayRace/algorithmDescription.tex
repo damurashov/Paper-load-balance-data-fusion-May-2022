@@ -1,10 +1,10 @@
 Once an agent has received "high-level" weights, it must update its local preference hierarchy graph.
-After that it should update the list of its neighbours, assess them against lower-level criterion (while taking features of the task to be assigned into consideration), and make the decision on whether to pass the task to some other node, or run it now.
+After that it should update the list of its neighbours (thus taking the cluster's changing topology into acoount), assess them against lower-level criterion (while taking features of the task to be assigned into consideration), and make the decision on whether to pass the task to some other node, or run it itself.
 
 This reasoning process is equivalent to that described in listing \ref{lst:agent-reason}, only a bit detailed.
 In the case we describe, the "perform" procedure consists of either running the task, if the selected node number is equivalent to that of the decision making node, or pass it to the best matching neighbour.
 
-We will not elaborate on how exactly assessments in the context of a criteria can be done (procedure "assess" in listing \ref{lst:agent-reason}), because this topic is complicated enough to be a research of its own.
+Once again, will not elaborate on how exactly assessments in the context of a criteria can be done (procedure "assess" in listing \ref{lst:agent-reason}), because this topic is complicated enough to be a research of its own.
 But probably the best (the most practical) way to do so is to devise a set of heuristic measures.
 Success of the aforementioned "Kubernetes" which uses engineeric heuristics suggests that the lack of solid theoretical foundations in this particular aspect will not be too much of an impediment.
 
