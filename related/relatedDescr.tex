@@ -1,0 +1,32 @@
+The question is how do we reconcile the necessity to adhere to the global strategy, and yet at the same time do not make
+the system so rigid so individual agents become unable to apply the best of their situational awareness to make the best
+solution possible within the confinements of the general strategy. How do we translate our general objectives into
+individual agents' decision making processes?
+
+There exists a plethora of algorithms solving the problem of load balancing in heterogeneous networks \cite{gamal-2019}, \cite{adhikari-2018}, including those with dynamic topologies \cite{sahoo-2020}, \cite{zhang-2018}.
+However, many of load balancing algorithms only offer solutions to some narrow aspect of the problem, such as uniform distribution of load, or achieving a match between a node's computational capabilities and the task that it supposed to run.
+Moreover, a significant part of currently used enterprise solutions, such as Kubernetes \cite{kubernet17}, extensively rely on engineeric heuristics.
+Patching imperfections of the real world with non-generalizable ad-hoc solutions is an inevitable part of any engineering process.
+However, it would be helpful to have a theoretical foundation flexible enough to be applicable in this domain, but at the same time not too rigid so it leaves a room for necessary technical amendments.
+
+In this paper, we frame load balancing as the problem of swarm coordination, and propose a way to solve it while fusing higher level cluster management objectives (i.e. strategic goals) into lower-level automated decision making performed by an agent.
+% TODO: ref. Gorodetsky
+At the core of our approach, lays the idea to use AHP \cite{saaty-2008} algorithm combined with a "relay race" load balancing approach described in \cite{gorodetskii-2012}.
+%TODO: chech whether we provide the definition for "level"
+With AHP algorithm, the final decision can be influenced through adjusting weights of its preference hierarchy graph.
+We propose to share this graph between agents, assign agents with roles, and associate each role with a part of the shared graph.
+The associated chunk of the graph (its weights, to be precise) may be changed locally or globally, thus shifting the final decision an agent would make in one direction or another.
+
+This work is based on two experiment-proven results we acquired previously.
+% TODO: ref. IMMOD
+In \cite{murashov-2021}, we propose using multi-level AHP algorithm's preference hierarchy graph for fusing strategic level objectives into agents' tacticlal decision making, and create a simulation testing it.
+In \cite{murashov-2022}, we experiment on applying AHP in combination with the "relay race" algorithm to the load balancing problem, but without using additional levels in the preference hierarchy graph (PHG).
+Replacing a conventional 3-level preference PHG with 4-level one (which is one of the key points of this work) does not impair the validity of AHP algorithm, which makes our proposal a justified iteration over \cite{murashov-2022}.
+
+We are by no means the first to offer using preference hierarchies to model decision-making in multi-agent systems \cite{cartvehishvili-2018-model}, \cite{drakaki-2018-intelligent}, neither are we in regard that we offer to tweak weights of that graph hierarchy to adjust agents' behavior \cite{zytniewski-2016-application}, \cite{brintrup-2010-behaviour}.
+But to our best knowledge we are the first who offered to take advantage of the PHG structure and interpret it in the way that enables a translation of strategic objectives into tactical ones and influence of high-level strategic objectives on low-level decision making.
+And we have failed to find a similar implementation that performs weights adjustment in a distributed manner.
+
+The structure of this paper reads as follows.
+We first describe the algorithm of distributed decision making (Sections \ref{sect:approachGen} and \ref{sect:approachFormal}) enabling setting high-level (strategic) goals and fusing them into low-level decision making.
+Using this as a foundation, we then step on to the second part of the approach, where we explain how this algorithm can be applied to the load balancing problem (Section \ref{sect:relayRace}).
