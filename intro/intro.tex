@@ -5,20 +5,12 @@ In creating multi agent systems, there can be delineated 2 general approaches.
 The first one is to set agents up and let them figure out a strategy through a series of interactions bearing significant information exchange while optimizing against some objective.
 As appealing as it is and as effective as it can be \cite{dorigo-2006}, we sometimes need something of a bigger certainty meaning that we want to express the objective in a more straightworward way.
 The second one is to create a rigid deterministic system, e.g. rule-based.
-But to make such systems applicable in practice, it requires creating knowledge bases of an immense scale \cite{lenat-2022}.
+But to make such systems practical, it requires creating knowledge bases of an immense scale \cite{lenat-2022}.
 
-The advantage of options in between those two extremes is arguably the flexibility those have.
-We can roughly delineate two aspects in the process of that flexible group decision making: strategic and tactic.
-The first one pertains to so-called "big picture".
-There exists some entity that is entitled to establish the direction of the group's strategy, given that it has sufficient information, can reason in bigger-scale terms and define the general course of actions for the entire group.
-However, it cannot (and should not) oversee all the details of the strategy's particular implementation instances.
-It is better to delegate this part of decision making to smaller groups or individual agents.
-There is no one-size-fits-all solutions in systems comprising multiple entities, and some decisions are better made in an ad-hoc manner.
-% TODO: "some" what? Situational awareness \cite{endsley-1995} of individual agents may and often does possess detailed information that is preferable to high-level instructions in the process of decision making.
+There is value in a model that enables independent action while allowing to control the swarm.
+A method enabling separation of global and local reasoning would make it possible to detach the implementation of an individual agent from any framework imposed by control system.
 
 In this paper, we propose an agent-based algorithm for load balancing in heterogenous networks that has two distinctive features.
 First, it enables achieving load balance in a network of an arbitrary topology automatically, without any interventions on behalf of an entity maintaining the network, and regardless of the state the network is in by the moment the process of load balancing gets started.
 Second, it allows separation of load balancing objectives into two levels: strategic and tactic.
-This kind of separation loosens the influence of strategic objectives on  agents' (nodes) individual decision making, thus enabling the latter to handle local objectives in a more tailored fashion.
-
-
+This kind of separation loosens the influence of strategic objectives on  agents' (nodes) individual decision making, thus enabling the latter to handle local objectives in a more tailored fashion, and, from engineeric point of view, loosens constraints on reasoning algorithms implemented by agents.
