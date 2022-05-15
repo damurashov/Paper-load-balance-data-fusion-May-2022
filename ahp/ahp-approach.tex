@@ -63,15 +63,13 @@ The following is a brief summary of our approach's key points.
 
 \begin{itemize}
     \item The structure of neither shared nor local graphs gets changed during the simulation;
-    \item Weights connecting the alternatives $\fnmalts$ and those connecting the node $\fnmroot$ are the only ones that
-        change during the simulation;
     \item Every agent may read the shared graph (Figure \ref{fig:prefgraph-concept-shared}), its weights and structure;
     \item Every agent has a predefined set of \textit{actions} assigned to it specifically;
     \item Every agent has to select an action which it will perform for a certain timespan, therefore, every action is
         mapped to the preference graph;
     \item Those alternatives, plus the shared graph form the local preference graph only visible for this agent (hence
         the name "local");
-    \item Before every decision making iteration, the agent assesses alternatives $\fnmalts$ \textit{in the contexts} of
+    \item Before every decision making iteration, the agent performs assessment of the alternatives $\fnmalts$ \textit{in the contexts} of
         aspects $ \fnmasps{N-1} $ using its means of local tactical assessment. Then having all the intermediate weights
         it assessess them \textit{in the context of} node $\fnmroot$. The action having the highest weight in the
         resulting vector gets selected for the execution;
